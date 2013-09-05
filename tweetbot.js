@@ -1,28 +1,25 @@
 var config = require('./config'),
     Twit = require('twit'),
-    MongoClient = require('mongodb').MongoClient;
+    mongoose = require('mongoose');
 
-var T = new Twit(config.oauth_creds);
+var T = new Twit(config.oauth_creds),
+    quotes = mongoose.model('quotes', {msg: String, src: String});
 
-var tweet = function() {
-  MongoClient.connect(config.db_uri, function (err, db) {
-    if (err) throw err;
-
-    var collection = db.collection('quotes');
-    collection.count(function (err, count) {
-      var rnd = Math.floor(Math.random() * count);
-      db.collection('quotes').find({}).limit(1).skip(rnd).toArray(function (err, results) {
-        var quote = results[0],
-            msg = quote.msg + '\n' + quote.src;
-        T.post('statuses/update', {status: msg}, function (err, reply) {
-          if (err) throw err;
-          console.log(new Date);
-          console.log(msg);
-        });
-        db.close();
-      });
+var tweet = function () {
+  var promise = quotes.count().exec();
+  promise.then(function (cnt) {
+    var n = Math.floor(Math.random() * cnt);
+    return quotes.findOne({}).skip(n).exec();
+  }).then(function (quote) {
+    var msg = quote.msg + '\n' + quote.src;
+    T.post('statuses/update', {status: msg}, function (err, reply) {
+      if (err) console.dir(err);
+      console.log('--->>>');
+      console.log(new Date);
+      console.log(msg);
     });
-  });
+  }).end();
 };
 
-setInterval(tweet, config.tweet_interval);
+mongoose.connect('mongodb://tweetbot:kdznbmfsib@paulo.mongohq.com:10098/ntalbs-mongodb');
+setInterval(tweet, 5000);
