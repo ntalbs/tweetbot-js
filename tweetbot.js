@@ -16,7 +16,8 @@ var tweet = function() {
             msg = quote.msg + '\n' + quote.src;
         T.post('statuses/update', {status: msg}, function (err, reply) {
           if (err) throw err;
-          console.log(reply);
+          console.log(new Date);
+          console.log(msg);
         });
         db.close();
       });
