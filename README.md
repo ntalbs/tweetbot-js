@@ -1,4 +1,4 @@
-tweetbot-js
+TweetBot-js
 ===========
 
 Simple tweet bot written in JavaScript.
@@ -15,6 +15,14 @@ After this, edit `config.js` to fill the oauth credentials and database uri.
 You should run the following command to install dependant modules.
 
     $ npm install
+
+This program uses momgodb and the collection name is `quotes`. The colleciton should have the following structure:
+
+    {
+      _id: ObjectId("..."),
+      src: "source of the text",
+      msg: "text message. blah blah..."
+    }
 
 ## Run
 
