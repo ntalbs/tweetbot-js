@@ -21,5 +21,5 @@ var tweet = function () {
   }).end();
 };
 
-mongoose.connect('mongodb://tweetbot:kdznbmfsib@paulo.mongohq.com:10098/ntalbs-mongodb');
-setInterval(tweet, 5000);
+mongoose.connect(config.db_uri);
+setInterval(tweet, config.tweet_interval);
