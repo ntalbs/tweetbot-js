@@ -1,17 +1,20 @@
 // mongodb test.
 
-var MongoClient = require('mongodb').MongoClient,
-    format = require('util').format;
+var mongoose = require('mongoose');
+var quotes = mongoose.model('quotes', {msg: String, src: String});
+mongoose.connect('mongodb://tweetbot:kdznbmfsib@paulo.mongohq.com:10098/ntalbs-mongodb');
 
-MongoClient.connect('mongodb://tweetbot:kdznbmfsib@paulo.mongohq.com:10098/ntalbs-mongodb', function (err, db) {
-  if (err) throw err;
-
-  var collection = db.collection('quotes');
-  collection.count(function (err, count) {
-    var rnd = Math.floor(Math.random() * count);
-    db.collection('quotes').find({}).limit(1).skip(rnd).toArray(function (err, results) {
-      console.dir(results);
-      db.close();
-    });
-  });
-});
+setInterval(function () {
+  console.log(">>>>>");
+  var promise = quotes.count().exec();
+  promise.then(function (cnt) {
+    console.log("count=", cnt);
+    var n = Math.floor(Math.random() * cnt);
+    return quotes.findOne({}).skip(n).exec();
+  }).then(function (quote) {
+    console.log(quote);
+  }).then(function () {
+    // console.log("disconnect");
+    // mongoose.disconnect();
+  }).end();
+}, 3000);
