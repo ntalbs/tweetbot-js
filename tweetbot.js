@@ -23,4 +23,4 @@ var tweet = function() {
   });
 };
 
-setInterval(tweet, config.tweet_peroid);
+setInterval(tweet, config.tweet_interval);
