@@ -16,7 +16,7 @@ You should run the following command to install dependant modules.
 
     $ npm install
 
-This program uses momgodb and the collection name is `quotes`. The colleciton should have the following structure:
+This program uses momgodb and the collection name is `quotes`. The document in the colleciton should have the following structure:
 
     {
       _id: ObjectId("..."),
