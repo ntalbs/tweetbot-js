@@ -8,7 +8,6 @@ mongoose.connect('mongodb://tweetbot:kdznbmfsib@paulo.mongohq.com:10098/ntalbs-m
 
 fs.readFile(filename, 'utf8', function (err, data) {
   var docs = JSON.parse(data);
-  console.dir(docs);
 
   quotes.create(docs, function(err) {
     if (err) throw err;
