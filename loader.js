@@ -1,10 +1,11 @@
-var fs = require('fs'),
+var config = require('./config'),
+    fs = require('fs'),
     filename = process.argv[2],
     mongoose = require('mongoose'),
     quotesSchema = new mongoose.Schema({msg:String, src:String}, {versionKey:false});
     quotes = mongoose.model('quotes', quotesSchema);
 
-mongoose.connect('mongodb://tweetbot:kdznbmfsib@paulo.mongohq.com:10098/ntalbs-mongodb');
+mongoose.connect(config.db_url);
 
 fs.readFile(filename, 'utf8', function (err, data) {
   var docs = JSON.parse(data);
