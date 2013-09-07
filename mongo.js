@@ -1,8 +1,10 @@
 // mongodb test.
 
-var mongoose = require('mongoose');
-var quotes = mongoose.model('quotes', {msg: String, src: String});
-mongoose.connect('mongodb://tweetbot:kdznbmfsib@paulo.mongohq.com:10098/ntalbs-mongodb');
+var config = require('./config'),
+    mongoose = require('mongoose'),
+    quotes = mongoose.model('quotes', {msg: String, src: String});
+
+mongoose.connect(config.db_uri);
 
 setInterval(function () {
   console.log(">>>>>");
