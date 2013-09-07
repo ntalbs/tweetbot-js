@@ -5,7 +5,7 @@ var config = require('./config'),
     quotesSchema = new mongoose.Schema({msg:String, src:String}, {versionKey:false});
     quotes = mongoose.model('quotes', quotesSchema);
 
-mongoose.connect(config.db_url);
+mongoose.connect(config.db_uri);
 
 fs.readFile(filename, 'utf8', function (err, data) {
   var docs = JSON.parse(data);
