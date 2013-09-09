@@ -6,11 +6,15 @@ var config = require('./config'),
     mongoose = require('mongoose'),
     quotes = mongoose.model('quotes', {msg: String, src: String});
 
+var escapeQuotes = function (str) {
+  return str.replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
+};
+
 out.on('open', function (fd) {
   mongoose.connect(config.db_uri);
   var q_stream = quotes.find().stream();
   q_stream.on('data', function (q) {
-    out.write('{msg: "' + q.msg + ', src: "' + q.src +'"}\n');
+    out.write('{"msg": "' + escapeQuotes(q.msg) + '", "src": "' + escapeQuotes(q.src) +'"}\n');
   }).on('error', function (err) {
     throw err;
   }).on('close', function () {
