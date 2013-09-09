@@ -7,7 +7,7 @@ var config = require('./config'),
     quotes = mongoose.model('quotes', {msg: String, src: String});
 
 var escapeQuotes = function (str) {
-  return str.replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
+  return str.replace(/"/g, '\\"');
 };
 
 out.on('open', function (fd) {
