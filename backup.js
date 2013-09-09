@@ -15,7 +15,7 @@ out.on('open', function (fd) {
   var q_stream = quotes.find().stream();
   out.write('[\n');
   q_stream.on('data', function (q) {
-    out.write('{"msg": "' + escapeQuotes(q.msg) + '", "src": "' + escapeQuotes(q.src) +'"}\n');
+    out.write('{"msg": "' + escapeQuotes(q.msg) + '", "src": "' + escapeQuotes(q.src) +'"},\n');
   }).on('error', function (err) {
     throw err;
   }).on('close', function () {
