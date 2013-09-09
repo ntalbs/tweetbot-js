@@ -1,7 +1,7 @@
 require('date-utils');
 var config = require('./config'),
     fs = require('fs'),
-    filename = process.argv[2] + Date.today().toFormat('YYYY-MM-DD'),
+    filename = process.argv[2] + Date.today().toFormat('YYYY-MM-DD')+'.json',
     out = fs.createWriteStream(filename),
     mongoose = require('mongoose'),
     quotes = mongoose.model('quotes', {msg: String, src: String});
