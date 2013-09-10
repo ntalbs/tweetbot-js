@@ -16,6 +16,7 @@ You should run the following command to install dependant modules.
 
     $ npm install
 
+## Load data
 This program uses momgodb and the collection name is `quotes`. The document in the colleciton should have the following structure:
 
     {
@@ -23,6 +24,22 @@ This program uses momgodb and the collection name is `quotes`. The document in t
       src: "source of the text",
       msg: "text message. blah blah..."
     }
+
+You can make a JSON file containing an array of documents and load it into database using `loader.js`. JSON file should have the following structure:
+
+    [
+      {"src": "...", "msg": ...},
+      {"src": "...", "msg": ...},
+      {"src": "...", "msg": ...},
+      ...
+      {"src": "...", "msg": ...}
+    ]
+
+After you prepared the JSON file, you can run the following command:
+
+    $ node loader.js data.json
+
+where `data.json` is the data file.
 
 ## Run
 
