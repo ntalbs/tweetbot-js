@@ -1,0 +1,8 @@
+textarea, input {
+  width: 300px;
+}
+
+#count {
+  font-size: 15pt;
+  color: red;
+}
