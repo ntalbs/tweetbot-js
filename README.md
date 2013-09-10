@@ -46,3 +46,10 @@ where `data.json` is the data file.
     $ node tweetbot.js
 
 This will fetch a random message from the database you specified in `config.js` and tweet it, periodically. You can specify the interval by setting `tweet-interval` property in the config file.
+
+## Backup
+You can backup the database data into JSON file.
+
+    $ node backup.js backup
+
+where `backup` is the prefix of backup file name. The backup file name is specified as `backup-YYYY-MM-DD.json`.
