@@ -13,10 +13,13 @@ var tweet = function () {
   }).then(function (quote) {
     var msg = quote.msg + '\n' + quote.src;
     T.post('statuses/update', {status: msg}, function (err, reply) {
-      if (err) console.dir(err);
-      console.log('--->>>');
-      console.log(new Date);
-      console.log(msg);
+      if (err) {
+        console.dir(err);
+      } else {
+        console.log('--->>>');
+        console.log(new Date);
+        console.log(msg);
+      }
     });
   }).end();
 };
