@@ -1,5 +1,6 @@
 require('date-utils');
 var config = require('./config'),
+    util = require('util'),
     fs = require('fs'),
     filename = process.argv[2] + Date.today().toFormat('-YYYY-MM-DD')+'.json',
     out = fs.createWriteStream(filename),
@@ -15,7 +16,7 @@ out.on('open', function (fd) {
   var q_stream = quotes.find().stream();
   out.write('[\n');
   q_stream.on('data', function (q) {
-    out.write('{"msg": "' + escapeQuotes(q.msg) + '", "src": "' + escapeQuotes(q.src) +'"},\n');
+    out.write(util.format('{"msg": "%s", "src": "%s"},\n', escapeQuotes(q.msg), escapeQuotes(q.src)));
   }).on('error', function (err) {
     throw err;
   }).on('close', function () {
