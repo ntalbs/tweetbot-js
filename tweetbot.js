@@ -14,11 +14,10 @@ var tweet = function () {
     var msg = quote.msg + '\n' + quote.src;
     T.post('statuses/update', {status: msg}, function (err, reply) {
       if (err) {
-        console.dir(err);
-      } else {
         console.log('--->>>');
         console.log(new Date);
         console.log(msg);
+        console.dir(err);
       }
     });
   }).end();
