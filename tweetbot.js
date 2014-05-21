@@ -24,4 +24,5 @@ var tweet = function () {
 };
 
 mongoose.connect(config.db_uri);
-setInterval(tweet, config.tweet_interval);
+tweet(); // tweet immediately after this script run
+setInterval(tweet, config.tweet_interval); // tweet peoridically
