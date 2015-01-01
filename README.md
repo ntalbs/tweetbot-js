@@ -4,13 +4,18 @@ TweetBot-js
 Simple tweet bot written in JavaScript.
 
 ## Setup
-Clone this project, copy `_config.js` to `config.js`.
+Clone this project.
 
     $ git clone https://github.com/ntalbs/tweetbot-js.git
     $ cd tweetbot-js
-    $ cp _config.js config.js
 
-After this, edit `config.js` to fill the oauth credentials and database uri.
+`config.js` depends on the following environment variables. Set up the environment variables.
+
+    $ export TWEETBOT_TWITTER_CONSUMER_KEY=...
+    $ export TWEETBOT_TWITTER_CONSUMER_SECRET=...
+    $ export TWEETBOT_TWITTER_ACCESS_TOKEN=...
+    $ export TWEETBOT_TWITTER_ACCESS_TOKEN_SECRET=...
+    $ export TWEETBOT_DB_URI=...
 
 You should run the following command to install dependant modules.
 
