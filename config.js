@@ -1,8 +1,8 @@
 exports.oauth_creds = {
-  consumer_key: 'consumer_key',
-  consumer_secret: 'consumer_secret',
-  access_token: 'access_token',
-  access_token_secret: 'access-token-secret'
+  consumer_key: process.env.TWEETBOT_TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWEETBOT_TWITTER_CONSUMER_SECRET,
+  access_token: process.env.TWEETBOT_TWITTER_ACCESS_TOKEN,
+  access_token_secret: process.env.TWEETBOT_TWITTER_ACCESS_TOKEN_SECRET
 };
-exports.db_uri = 'database-uri';
+exports.db_uri = process.env.TWEETBOT_DB_URI;
 exports.tweet_interval = 1000 * 60 * 60; // one hour
