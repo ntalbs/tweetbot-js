@@ -3,6 +3,6 @@ exports.oauth_creds = {
   consumer_secret: process.env.TWEETBOT_TWITTER_CONSUMER_SECRET,
   access_token: process.env.TWEETBOT_TWITTER_ACCESS_TOKEN,
   access_token_secret: process.env.TWEETBOT_TWITTER_ACCESS_TOKEN_SECRET
-};
-exports.db_uri = process.env.TWEETBOT_DB_URI;
-exports.tweet_interval = 1000 * 60 * 60; // one hour
+}
+
+exports.tweet_interval = 1000 * 60 * 60 // one hour
