@@ -1,8 +1,6 @@
-const fs = require('fs')
-const Twit = require('twit')
+const quotes = JSON.parse(require('fs').readFileSync('./data/backup-2016-11-03.json', 'utf8'))
 const config = require('./config')
-
-const quotes = JSON.parse(fs.readFileSync('./data/backup-2016-11-03.json', 'utf8'))
+const Twit = require('twit')
 const T = new Twit(config.oauth_creds)
 
 function randomQuote () {
@@ -18,7 +16,7 @@ function tweetMessage (quote) {
       console.error(quote)
       console.dir(err)
     } else {
-      console.log('tweet succeed.')
+      console.log('tweet succeed at ', new Date())
       console.log(res.text)
     }
   })
