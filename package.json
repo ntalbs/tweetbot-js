@@ -1,11 +1,10 @@
 {
   "name": "tweetbot",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Simple tweet bot written in JavaScript.",
   "dependencies": {
-    "twit": "~1.1.9",
-    "mongoose": "3.6.19",
-    "date-utils": "1.2.14"
+    "twit": "~2.2.5",
+    "date-utils": "~1.2.14"
   },
   "repository": {
     "type": "git",
@@ -14,11 +13,10 @@
   "keywords": [
     "tweetbot",
     "nodejs",
-    "javascript",
-    "mongodb"
+    "javascript"
   ],
   "author": "ntalbs",
-  "license": "MIT License",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ntalbs/tweetbot-js/issues"
   }
