@@ -22,4 +22,4 @@ function tweetMessage (quote) {
   })
 }
 
-tweetMessage(randomQuote())
+exports.tweetRandom = () => tweetMessage(randomQuote())
